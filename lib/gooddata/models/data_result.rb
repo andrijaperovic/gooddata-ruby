@@ -1,8 +1,8 @@
-require 'fastercsv'
+require 'csv'
 
 module GoodData
 
-  class Row < FasterCSV::Row
+  class Row < CSV::Row
     def ==(other)
        len = length()
        return false if len != other.length
@@ -74,7 +74,7 @@ module GoodData
     end
 
     def assemble_table
-      @table = FasterCSV::Table.new([GoodData::Row.new([],[],false)])
+      @table = CSV::Table.new([GoodData::Row.new([],[],false)])
     end
 
     def to_table
@@ -119,7 +119,7 @@ module GoodData
       else
         @headers = sf_data.first.keys - [:type, :Id]
       end
-      @table = FasterCSV::Table.new(sf_data.collect do |line|
+      @table = CSV::Table.new(sf_data.collect do |line|
         GoodData::Row.new([], @headers.map {|h| line[h] || ' '}, false)
       end)
     rescue
@@ -181,7 +181,7 @@ module GoodData
     end
 
     def to_table
-      FasterCSV::Table.new(table.transpose.map {|line| GoodData::Row.new([], line.map {|item| item || ' '}, false)})
+      CSV::Table.new(table.transpose.map {|line| GoodData::Row.new([], line.map {|item| item || ' '}, false)})
     end
 
     def == (otherDataResult)

@@ -65,7 +65,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<parseconfig>, [">= 0"])
       s.add_runtime_dependency(%q<json_pure>, [">= 0"])
       s.add_runtime_dependency(%q<rest-client>, [">= 0"])
-      s.add_runtime_dependency(%q<fastercsv>, [">= 0"])
+      s.add_runtime_dependency(%q<csv>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_runtime_dependency(%q<rubyzip>, [">= 0"])
     else
@@ -73,7 +73,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<parseconfig>, [">= 0"])
       s.add_dependency(%q<json_pure>, [">= 0"])
       s.add_dependency(%q<rest-client>, [">= 0"])
-      s.add_dependency(%q<fastercsv>, [">= 0"])
+      s.add_dependency(%q<csv>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<rubyzip>, [">= 0"])
     end
@@ -82,7 +82,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<parseconfig>, [">= 0"])
     s.add_dependency(%q<json_pure>, [">= 0"])
     s.add_dependency(%q<rest-client>, [">= 0"])
-    s.add_dependency(%q<fastercsv>, [">= 0"])
+    s.add_dependency(%q<csv>, [">= 0"])
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<rubyzip>, [">= 0"])
   end

@@ -1,5 +1,6 @@
 require 'iconv'
-require 'fastercsv'
+require 'csv'
+require 'date'
 
 ##
 # Module containing classes that counter-part GoodData server-side meta-data
@@ -33,7 +34,7 @@ module GoodData
 
     SKIP_FIELD = false
 
-    BEGINNING_OF_TIMES = Date.parse('1/1/1900')
+    BEGINNING_OF_TIMES = Date.strptime '01/01/1900', '%m/%d/%Y'
 
     class << self
       def add_dataset(title, columns, project = nil)
@@ -213,7 +214,7 @@ module GoodData
           # TODO make sure schema columns match CSV column names
           zip.get_output_stream('upload_info.json') { |f| f.puts JSON.pretty_generate(to_manifest(mode)) }
           zip.get_output_stream('data.csv') do |f|
-            FasterCSV.foreach(path, :headers => true, :return_headers => true) do |row|
+            CSV.foreach(path, :headers => true, :return_headers => true) do |row|
               output = if row.header_row?
                 transform_header(row)
               else

@@ -1,6 +1,6 @@
 require 'logger'
 require 'tempfile'
-require 'fastercsv'
+require 'csv'
 
 require 'helper'
 require 'gooddata/model'
@@ -33,7 +33,7 @@ class TestModel < Test::Unit::TestCase
     setup do
       GoodData::Command::connect
       @file = Tempfile.open 'test_csv'
-      FasterCSV.open @file.path, 'w' do |csv|
+      CSV.open @file.path, 'w' do |csv|
         FILE.each { |row| csv << row }
       end
       @project = GoodData::Project.create :title => "gooddata-ruby test #{Time.now.to_i}"
